@@ -1,0 +1,97 @@
+
+   
+    .card{
+        height: 500px;
+    }
+    .card-text {
+        max-height: 100px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        
+        white-space: normal;
+       
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
+}
+.card-title{
+    
+    overflow: hidden;
+        text-overflow: ellipsis;
+        
+        white-space: normal;
+       
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+}
+.text-body-secondary{
+    margin: 0;  
+    padding: 0;
+    font-size: smaller;
+}
+body {
+            background-color: #222831;
+            color: #EEEEEE; 
+        }
+.navbar {
+            background-color: #393E46; 
+        }
+.nav-link {
+            color: #EEEEEE; 
+        }
+.nav-link.active {
+            color: #00ADB5;
+        }
+        .nav-tabs {
+            border-bottom: 2px solid #393E46;
+        }
+        .nav-tabs .nav-link {
+            color: #EEEEEE;
+        }
+        .nav-tabs .nav-link.active {
+            color: #00ADB5; 
+        }
+        .card {
+            background-color: #393E46; 
+            color: #EEEEEE; 
+        }
+        .btn-outline-success {
+            color: #00ADB5; 
+            border-color: #00ADB5; 
+        }
+        .btn-outline-success:hover {
+            background-color: #00ADB5; 
+            color: #EEEEEE;
+        }
+       
+        .card-text,
+        .card-title,
+        .text-body-secondary {
+            color: #EEEEEE; 
+        }
+        .source{
+          color: rgb(204, 204, 204);
+        }
+
+.card-img-top{
+    max-height: 220px;
+}
+.navbar-filter {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+        }
+
+.navbar-filter .nav-link {
+            color: white;
+            padding: 0.5rem 1rem;
+        }
+
+.navbar-filter .nav-link.active {
+            background-color: #007bff;
+            border-radius: 0.25rem;
+   
+        }
+    
