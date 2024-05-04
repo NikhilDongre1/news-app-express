@@ -3,10 +3,11 @@ const axios = require("axios");
 const newsRouter = express.Router();  
 
 
+const currentDate = new Date().toISOString().split('T')[0];
+const fromDate  = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]; 
 const apiKey = '1dd4907c53134c0c9732a81f07939afc';
-const apiUrl = `https://newsapi.org/v2/top-headlines?country=in&from=2024-04-15&sortBy=popularity&apiKey=${apiKey}`;
+const apiUrl = `https://newsapi.org/v2/top-headlines?country=in&from=${fromDate}&sortBy=popularity&apiKey=${apiKey}`;
 let news;
-const error = null;
 newsRouter.get('/',async(req,res)=>{
     try{
         news = await axios.get(apiUrl);
@@ -19,7 +20,7 @@ newsRouter.get('/',async(req,res)=>{
             res.render("news",{news:null});
             console.log(error.response.data);
             console.log(error.response.status);
-            console.log(error.response.headers);
+            
         }
         else if(error.request){
             res.render("news",{news:null});
@@ -47,7 +48,7 @@ newsRouter.get('/:category', async (req,res)=>{
             res.render("news",{news:null});
             console.log(error.response.data);
             console.log(error.response.status);
-            console.log(error.response.headers);
+            
         }
         else if(error.request){
             res.render("news",{news:null});
@@ -62,12 +63,12 @@ newsRouter.get('/:category', async (req,res)=>{
 });
 
 newsRouter.post('/',express.urlencoded({ extended: true }),async(req,res)=>{
-    const currentDate = new Date().toISOString().split('T')[0];
-    const searchQuery = req.body.search;
-    const fromDate  = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]; 
-     
     
-    const searchApiUrl = `https://newsapi.org/v2/everything?q=${encodeURIComponent(searchQuery)}&from=${fromDate}&to=${currentDate}&language=en&sortBy=popularity&apiKey=${apiKey}`;
+    const searchQuery = req.body.search;
+   
+     //actual format , %%... endcoded.
+    
+    const searchApiUrl = `https://newsapi.org/v2/everything?q=${encodeURIComponent(searchQuery)}&from=2024-04-04&to=${currentDate}&language=en&sortBy=popularity&apiKey=${apiKey}`;
     try{
         news = await axios.get(searchApiUrl);
         const response = news.data;
@@ -80,7 +81,6 @@ newsRouter.post('/',express.urlencoded({ extended: true }),async(req,res)=>{
             res.render("news",{news:null});
             console.log(error.response.data);
             console.log(error.response.status);
-            console.log(error.response.headers);
             // console.log(searchApiUrl);
         }
         else if(error.request){
